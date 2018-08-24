@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-08-24T09:15:55.339Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>胡文(Christine Hu)</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网站搭建学习</title>
+    <link href="http://yoursite.com/2018/08/24/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://yoursite.com/2018/08/24/网站搭建学习/</id>
+    <published>2018-08-24T07:42:52.000Z</published>
+    <updated>2018-08-24T09:15:55.339Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="网站搭建"><a href="#网站搭建" class="headerlink" title="网站搭建"></a>网站搭建</h3><pre><code>参考网址：https://yegod.github.io/blog-1/</code></pre><h3 id="添加搜索功能"><a href="#添加搜索功能" class="headerlink" title="添加搜索功能"></a>添加搜索功能</h3><pre><code>参考网址：https://blog.csdn.net/ganzhilin520/article/details/79047983</code></pre><h3 id="添加评论功能"><a href="#添加评论功能" class="headerlink" title="添加评论功能"></a>添加评论功能</h3><pre><code>参考网址：https://blog.csdn.net/lcyaiym/article/details/76762074</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;网站搭建&quot;&gt;&lt;a href=&quot;#网站搭建&quot; class=&quot;headerlink&quot; title=&quot;网站搭建&quot;&gt;&lt;/a&gt;网站搭建&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;参考网址：https://yegod.github.io/blog-1/
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 
+      
+    
+    </summary>
+    
+    
+      <category term="伸手党" scheme="http://yoursite.com/tags/%E4%BC%B8%E6%89%8B%E5%85%9A/"/>
+    
+  </entry>
+  
+</feed>
