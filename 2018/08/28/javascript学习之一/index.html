@@ -1,4 +1,369 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Christine.Hu's Blog"><title>javascript学习之一 | Blog</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">javascript学习之一</h1><a id="logo" href="/.">Blog</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">javascript学习之一</h1><div class="post-meta"><a href="/2018/08/28/javascript学习之一/#comments" class="comment-count"><i id="changyan_count_unit" data-xid="2018/08/28/javascript学习之一/"></i>留言,<i id="changyan_parti_unit" data-xid="2018/08/28/javascript学习之一/"></i>参与</a><p><span class="date">Aug 28, 2018</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"></div><div class="tags"><a href="/tags/JavaScript/">JavaScript</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2018/08/24/网站搭建学习/" class="next">网站搭建学习</a></div><div id="comments"><div id="SOHUCS" sid="2018/08/28/javascript学习之一/"></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/28/javascript学习之一/">javascript学习之一</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/网站搭建学习/">网站搭建学习</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/伸手党/" style="font-size: 15px;">伸手党</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="undefined" title="暂无" target="_blank">暂无</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">胡文(Christine Hu).</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Christine.Hu's Blog"><title>javascript学习之一 | Blog</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">javascript学习之一</h1><a id="logo" href="/.">Blog</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">javascript学习之一</h1><div class="post-meta"><a href="/2018/08/28/javascript学习之一/#comments" class="comment-count"><i id="changyan_count_unit" data-xid="2018/08/28/javascript学习之一/"></i>留言,<i id="changyan_parti_unit" data-xid="2018/08/28/javascript学习之一/"></i>参与</a><p><span class="date">Aug 28, 2018</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h3 id="javascript学习13章（事件）"><a href="#javascript学习13章（事件）" class="headerlink" title="javascript学习13章（事件）"></a><center>javascript学习13章（事件）</center></h3><h4 id="基本释义"><a href="#基本释义" class="headerlink" title="基本释义"></a>基本释义</h4><p><strong>JavaScript</strong>与<strong>HTML</strong>之间的交互是通过<strong>事件</strong>实现的。<br><strong>事件:</strong>就是文档或浏览器窗口发生的一些特定的交互瞬间<br><strong>侦听器</strong>预定事件</p>
+<hr>
+<h4 id="时间流"><a href="#时间流" class="headerlink" title="时间流"></a>时间流</h4><blockquote>
+<p>描述是从页面中接收时间的顺序</p>
+</blockquote>
+<p><strong>IE</strong> 的时间流是 <strong>事件冒泡</strong><br><strong>Netscape Communicator</strong> 的时间流是 <strong>事件捕获</strong></p>
+<h6 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h6><blockquote>
+<p>事件开始时由具体的元素（文档中嵌套最深的那个节点）接收，然后逐级向上传播到较为不具体的节点（文档）。</p>
+</blockquote>
+<p><strong><em>所有现代浏览器都支持事件冒泡。IE5.5及更早的版本中的事件冒泡会跳过<html>元素（从body直接跳到document）。IE9、Firefox、chrome和safari则将事件一直冒泡到windows对象</html></em></strong></p>
+<h6 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h6><blockquote>
+<p>事件捕获的思想是不太具体的节点应该更早接收到事件，而具体的节点应该最后接收到事件。事件捕获的用意在于在事件到达目标之前捕获它。</p>
+</blockquote>
+<h6 id="DOM事件流"><a href="#DOM事件流" class="headerlink" title="DOM事件流"></a>DOM事件流</h6><blockquote>
+<p>时间流包括3个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段</p>
+</blockquote>
+<hr>
+<h4 id="事件处理程序"><a href="#事件处理程序" class="headerlink" title="事件处理程序"></a>事件处理程序</h4><p><strong>事件：</strong>用户或浏览器自身执行的某种动作<br><strong>click</strong>、<strong>load</strong>和<strong>mouse</strong>，都是事件的名字，而相应某种事件的函数就叫做<strong>事件处理程序</strong></p>
+<h6 id="HTML事件处理程序"><a href="#HTML事件处理程序" class="headerlink" title="HTML事件处理程序"></a>HTML事件处理程序</h6><h6 id="DOM0-级事件处理程序"><a href="#DOM0-级事件处理程序" class="headerlink" title="DOM0 级事件处理程序"></a>DOM0 级事件处理程序</h6><blockquote>
+<p>就是将一个函数赋值给一个事件处理程序属性(例如onClick)</p>
+</blockquote>
+<h6 id="DOM2-级事件处理程序"><a href="#DOM2-级事件处理程序" class="headerlink" title="DOM2 级事件处理程序"></a>DOM2 级事件处理程序</h6><blockquote>
+<p>定义了两个方法，用于处理制定和删除事件处理程序的操作：addEventLister()和removeEventLister()。<br>接受3个参数：要处理的事件名、作为事件处理程序的函数和一个布尔值（布尔值为true,表示在捕获阶段调用事件处理程序；如果为false,表示在冒泡阶段调用事件处理程序）</p>
+</blockquote>
+<h6 id="IE-级事件处理程序"><a href="#IE-级事件处理程序" class="headerlink" title="IE 级事件处理程序"></a>IE 级事件处理程序</h6><blockquote>
+<p>提供了类似的两个方法：attachEvent()和detachEvent()。<br>接受2个参数：事件处理程序名称和事件处理程序函数</p>
+</blockquote>
+<p><strong><em>在使用attachEvent()方法的情况下，事件处理程序会在全局作用中运行，因此this等于window</em></strong></p>
+<h6 id="跨浏览器的事件处理程序"><a href="#跨浏览器的事件处理程序" class="headerlink" title="跨浏览器的事件处理程序"></a>跨浏览器的事件处理程序</h6><blockquote>
+<p>使用EventUtil中addHandler()和removeHandler()<br>传入3个参数：要操作的元素、事件名称和事件处理程序</p>
+</blockquote>
+<p><code>var EventUtil={
+       addHandler:function(element,type,handler){
+           if(element.addEventListener){
+               element.addEventListener(type,handler,false)
+           }else if(element.attachEvent){
+               element.attachEvent(&quot;on&quot;+type,handler)
+           }else{
+               element[&#39;on&#39;+type]=handler
+           }
+       },
+       removeHandler:function(element,type,handler){
+           if(element.removeEventListener){
+               element.addEventListener(type,handler,false)
+           }else if(element.attachEvent){
+               element.detachEvent(&quot;on&quot;+type,handler)
+           }else{
+               element[&#39;on&#39;+type]=null
+           }
+       }
+   };</code></p>
+<hr>
+<h4 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h4><h6 id="DOM中的事件对象"><a href="#DOM中的事件对象" class="headerlink" title="DOM中的事件对象"></a>DOM中的事件对象</h6><ul>
+<li>所有事件都有下表列出的成员</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性/方法</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">读/写</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">bubbles</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">表明事件是否冒泡</td>
+</tr>
+<tr>
+<td style="text-align:center">cancelable</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">表明是否可以取消事件的默认行为</td>
+</tr>
+<tr>
+<td style="text-align:center">currentTarget</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">其事件处理程序当前正在处理事件的那个元素</td>
+</tr>
+<tr>
+<td style="text-align:center">defaultPrevented</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">为true表示已经调用了preventDefault()</td>
+</tr>
+<tr>
+<td style="text-align:center">detail</td>
+<td style="text-align:center">Integer</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">与事件相关的细节信息</td>
+</tr>
+<tr>
+<td style="text-align:center">evenPhase</td>
+<td style="text-align:center">Integer</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">调用事件处理程序的阶段：1表示捕获阶段，2表示“处于目标”，3表示冒泡阶段</td>
+</tr>
+<tr>
+<td style="text-align:center">preventDefault</td>
+<td style="text-align:center">Function</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">取消事件的默认行为。如果cancelable是true,则可以使用这个方法</td>
+</tr>
+<tr>
+<td style="text-align:center">stopImmediatePropagation</td>
+<td style="text-align:center">Function</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">取消事件的进一步捕获或者冒泡，同时阻止任何事件处理程序被调用(DOM3级重新增)</td>
+</tr>
+<tr>
+<td style="text-align:center">stopPropagation</td>
+<td style="text-align:center">Function</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">取消事件进一步的捕获或者冒泡。如果bubbles为true,则可以使用这个方法</td>
+</tr>
+<tr>
+<td style="text-align:center">target</td>
+<td style="text-align:center">Element</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">事件的目标</td>
+</tr>
+<tr>
+<td style="text-align:center">trusted</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">为true表示事件是浏览器生成的。为false表示是由开发人员通过javascript创建的（DOM3级事件中新增）</td>
+</tr>
+<tr>
+<td style="text-align:center">type</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">被触发的事件类型</td>
+</tr>
+<tr>
+<td style="text-align:center">view</td>
+<td style="text-align:center">Abstractive</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">与事件关联的抽象视图。等同于发生事件的window对象</td>
+</tr>
+</tbody>
+</table>
+<p><strong><em>只用在事件处理程序执行期间，event对象才会存在；一旦事件处理程序执行完毕，event对象就会被销毁</em></strong></p>
+<hr>
+<h6 id="IE中的事件对象"><a href="#IE中的事件对象" class="headerlink" title="IE中的事件对象"></a>IE中的事件对象</h6><p>在要访问IE中event对象有几种不同的方式，取决于指定事件处理程序的方法。</p>
+<ul>
+<li>在使用DOM0级方法添加事件处理程序时，event对象作为window对象的一个属性</li>
+<li>如果是使用attachEvent()添加的，那么就会有一个event对象作为参数被传入事件处理程序函数中（也可以通过window对象来访问event对象）</li>
+<li>通过HTML特性指定的事件处理程序，那么还可以通过一个名叫event的变量来访问event对象<br><code>&lt;input type=&#39;button&#39; value=&#39;Click me&#39; onclick=&#39;alert(event.type)&#39;/&gt;</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性/方法</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">读/写</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">cancelBubble</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">读/写</td>
+<td style="text-align:center">默认值为false，将其设置为true就可以取消事件冒泡（与DOM中stopPropagation()方法的作用相同）</td>
+</tr>
+<tr>
+<td style="text-align:center">returnValue</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">读/写</td>
+<td style="text-align:center">默认值为true,但将其设置为false就可以取消事件的默认行为（与DOM中preventDefalut()方法的作用相同）</td>
+</tr>
+<tr>
+<td style="text-align:center">srcElement</td>
+<td style="text-align:center">Element</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">事件的目标</td>
+</tr>
+<tr>
+<td style="text-align:center">type</td>
+<td style="text-align:center">String</td>
+<td style="text-align:center">只读</td>
+<td style="text-align:center">被触发的事件类型</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h6 id="跨浏览器的事件对象"><a href="#跨浏览器的事件对象" class="headerlink" title="跨浏览器的事件对象"></a>跨浏览器的事件对象</h6><p><code>var EventUtil={
+        addHandler:function(element,type,handler){
+            // 省略代码
+        },
+        getEvent:function(event){
+            return evnet?event:window.event
+        },
+        getTarget:function(event){
+            return event.target || event.srcElement
+        },
+        preventDefault:function (event) {
+            if(event.preventDefault){
+                event.preventDefault()
+            }else{
+                event.returnValue=false;
+            }
+        },
+        removeHandler:function(element,type,handler){
+            //省略代码
+        },
+        stopPropagation:function(event){
+            if(event.stopPropagation){
+                event.stopPropagation();
+            }else{
+                event.cancelBubble=true
+            }
+        }
+    }</code></p>
+<hr>
+<h4 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h4><p>“DOM3级事件”规定了以下几类事件类型</p>
+<ul>
+<li>UI事件，当用户与页面上的元素交互时触发</li>
+<li>焦点事件，当用户获得或失去焦点时触发</li>
+<li>鼠标事件，当用户通过鼠标在页面上执行操作时触发</li>
+<li>滚轮事件，当使用鼠标滚轮（或类似设备时）触发</li>
+<li>文本事件，当在文档中输入文本时触发</li>
+<li>键盘事件，当用户通过键盘在页面上执行操作时触发</li>
+<li>合成事件，当为IME(Input Medthod Editor,输入法编辑器)输入字符时触发</li>
+<li>变动事件，当底层DOM结构发生变化时触发</li>
+<li><del>变动名称事件，当元素或者属性名变动时触发，已经废弃</del></li>
+</ul>
+<h6 id="UI事件"><a href="#UI事件" class="headerlink" title="UI事件"></a>UI事件</h6><ul>
+<li>load事件</li>
+<li>unload事件</li>
+<li>resize事件<br><strong><em>浏览器窗口最小化最大化也会触发resize事件</em></strong></li>
+<li>scroll事件</li>
+</ul>
+<h6 id="焦点事件"><a href="#焦点事件" class="headerlink" title="焦点事件"></a>焦点事件</h6><ul>
+<li>blur</li>
+<li>DOMFocusIn</li>
+<li>DOMFocusOut</li>
+<li>focus</li>
+<li>focusin</li>
+<li>focusout</li>
+</ul>
+<h6 id="鼠标与滚轮事件"><a href="#鼠标与滚轮事件" class="headerlink" title="鼠标与滚轮事件"></a>鼠标与滚轮事件</h6><p>DOM3级中定义了9个鼠标事件</p>
+<ul>
+<li>click</li>
+<li>dbclick</li>
+<li>mousedown</li>
+<li>mouseenter: 在鼠标光标从元素外部首次移到元素范围之内时触发</li>
+<li>mouseleave: 在位于元素上方的鼠标移动到元素范围之外时触发</li>
+<li>mousemove: 当鼠标在元素内部移动时反复的触发</li>
+<li>mouseout： 在鼠标指针位于一个元素上方，然后用户将其移入另一个元素时触发</li>
+<li>mouseover：在鼠标指针位于一个元素的外部，然后用户将其首次移入另外一个元素边界之内触发</li>
+<li>mouseup</li>
+</ul>
+<ul>
+<li><p>1.客户区坐标位置</p>
+<blockquote>
+<p>鼠标事件都是在浏览器视口中的特定位置上发生的。这个位置信息保存在事件对象的clientX和clientY属性中。</p>
+</blockquote>
+</li>
+<li><p>2.页面坐标位置</p>
+<blockquote>
+<p>这个位置信息保存在事件对象的pageX和pageY属性中。</p>
+</blockquote>
+</li>
+<li><p>3.屏幕坐标位置</p>
+<blockquote>
+<p>这个位置信息保存在事件对象的screenX和screenY属性中。</p>
+</blockquote>
+</li>
+<li><p>4.修改键</p>
+</li>
+<li><p>5.相关元素</p>
+</li>
+<li>6.鼠标按钮</li>
+<li><p>7.更多的事件信息</p>
+<blockquote>
+<p>对于鼠标事件来说，detail中包含一个数值，表示在给定的位置上发生多少次点击</p>
+</blockquote>
+</li>
+<li><p>8.鼠标滚轮事件</p>
+</li>
+<li>9.触摸设备</li>
+<li>10.无障碍性问题</li>
+</ul>
+<h6 id="键盘与文本事件"><a href="#键盘与文本事件" class="headerlink" title="键盘与文本事件"></a>键盘与文本事件</h6><p>有3个键盘事件</p>
+<ul>
+<li>keydown：在键盘上按下任何键触发，可重复触发</li>
+<li>keypress: 在键盘上按下数字键触发，可重复触发</li>
+<li>keyup: 当用户释放键盘上的键时处罚</li>
+<li>textInput:在可编辑区域中输入字符时，就会触发这个事件</li>
+</ul>
+<h6 id="复合事件"><a href="#复合事件" class="headerlink" title="复合事件"></a>复合事件</h6><blockquote>
+<p>用于处理IME的输入序列</p>
+</blockquote>
+<h6 id="变动事件"><a href="#变动事件" class="headerlink" title="变动事件"></a>变动事件</h6><p>能在DOM中某一部分发生变化时给出提示</p>
+<ul>
+<li>DOMSubtreeModified：在DOM结构中发生任何变化时触发。这个事件在其他任何事件触发后都会触发</li>
+<li>DOMNodeInserted: 在一个节点作为子节点被插入另一个节点中时触发</li>
+<li>DOMNodeRemoved: 在节点从其父节点中被移除时触发</li>
+<li>DOMNodeInsertedIntoDocument:在一个节点被直接插入文档或通过子树直接插入文档之后触发。这个事件在DOMNodeInserted之后触发</li>
+<li>DOMNodeRemovedFromDocument:在一个节点被直接从文档中移除或通过子树间接从文档中移除之前触发。这个事件在DOMNodeRemoved之后触发</li>
+<li>DOMAtrrModified：在特性被修改之后触发</li>
+<li>DOMChracterDataModified:在文本节点的值发生变化时触发。</li>
+</ul>
+<h6 id="HTML5事件"><a href="#HTML5事件" class="headerlink" title="HTML5事件"></a>HTML5事件</h6><ul>
+<li>contextmenu事件<blockquote>
+<p>用以表示何时应该显示上下文菜单，以便开发人员取消默认的上下文菜单而提供自定义的菜单</p>
+</blockquote>
+</li>
+<li>beforeunload事件<blockquote>
+<p>是为了让开发人员有可能在页面卸载之前阻止这一操作</p>
+</blockquote>
+</li>
+<li>DOMContentLoaded事件<blockquote>
+<p>window的load事件会在页面中的一切都加载完毕时触发，但这个过程可能会因为要加载外部资源过多而颇费周折。DOMContentLoaded事件则在形成完整的DOM树之后就会触发，不理会图像，JavaScript文件、css文件或其他资源是否下载完毕。</p>
+</blockquote>
+</li>
+<li>readystatechange事件<blockquote>
+<p>提供与文档或元素的加载状态有关的信息</p>
+</blockquote>
+</li>
+<li>pageshow和pagehide事件</li>
+<li>hashChange事件<blockquote>
+<p>以便URL的参数列表发生变化时通知开发人员</p>
+</blockquote>
+</li>
+</ul>
+<h6 id="设备事件"><a href="#设备事件" class="headerlink" title="设备事件"></a>设备事件</h6><ul>
+<li>orientationchange事件<blockquote>
+<p>只要用户改变了设备查看模式，就会触发orientationchange事件   、</p>
+</blockquote>
+</li>
+</ul>
+<p><strong><em> 所有ios设备都支持orientationonchange事件和window.orientation属性</em></strong></p>
+<ul>
+<li>MozOrientation事件<blockquote>
+<p>当设备的加速计检测到设备方向改变时，就会触发这个事件。该事件只能提供一个平面的方向变化。</p>
+</blockquote>
+</li>
+</ul>
+<p><strong><em> 只有带加速器的设备才支持MozOrientation事件</em></strong></p>
+<ul>
+<li>deviceorientation事件</li>
+<li>devicemotion事件</li>
+</ul>
+<h6 id="触摸与手势事件"><a href="#触摸与手势事件" class="headerlink" title="触摸与手势事件"></a>触摸与手势事件</h6><ul>
+<li>触摸事件</li>
+<li>手势事件</li>
+</ul>
+<hr>
+<h4 id="内存和性能"><a href="#内存和性能" class="headerlink" title="内存和性能"></a>内存和性能</h4><h6 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h6><blockquote>
+<p>事件委托利用了事件冒泡，只指定一个事件处理程序，就可以管理一个某一类型的所有事件</p>
+</blockquote>
+<p><strong><em>最适合采用事件委托的事件包括click,mouseup.mousedown,keyup,keydown和keypress</em></strong></p>
+<h6 id="移除事件处理程序"><a href="#移除事件处理程序" class="headerlink" title="移除事件处理程序"></a>移除事件处理程序</h6><h4 id="模拟事件"><a href="#模拟事件" class="headerlink" title="模拟事件"></a>模拟事件</h4><h6 id="DOM中的事件模拟"><a href="#DOM中的事件模拟" class="headerlink" title="DOM中的事件模拟"></a>DOM中的事件模拟</h6><ul>
+<li>模拟鼠标事件</li>
+<li>模拟键盘事件</li>
+<li>模拟其他事件</li>
+<li>自定义DOM事件</li>
+</ul>
+<h6 id="IE中的事件模拟"><a href="#IE中的事件模拟" class="headerlink" title="IE中的事件模拟"></a>IE中的事件模拟</h6><hr>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4></div><div class="tags"><a href="/tags/JavaScript/">JavaScript</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2018/08/24/网站搭建学习/" class="next">网站搭建学习</a></div><div id="comments"><div id="SOHUCS" sid="2018/08/28/javascript学习之一/"></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#javascript学习13章（事件）"><span class="toc-text">javascript学习13章（事件）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本释义"><span class="toc-text">基本释义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#时间流"><span class="toc-text">时间流</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#事件冒泡"><span class="toc-text">事件冒泡</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#事件捕获"><span class="toc-text">事件捕获</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#DOM事件流"><span class="toc-text">DOM事件流</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#事件处理程序"><span class="toc-text">事件处理程序</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#HTML事件处理程序"><span class="toc-text">HTML事件处理程序</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#DOM0-级事件处理程序"><span class="toc-text">DOM0 级事件处理程序</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#DOM2-级事件处理程序"><span class="toc-text">DOM2 级事件处理程序</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#IE-级事件处理程序"><span class="toc-text">IE 级事件处理程序</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#跨浏览器的事件处理程序"><span class="toc-text">跨浏览器的事件处理程序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#事件对象"><span class="toc-text">事件对象</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#DOM中的事件对象"><span class="toc-text">DOM中的事件对象</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#IE中的事件对象"><span class="toc-text">IE中的事件对象</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#跨浏览器的事件对象"><span class="toc-text">跨浏览器的事件对象</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#事件类型"><span class="toc-text">事件类型</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#UI事件"><span class="toc-text">UI事件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#焦点事件"><span class="toc-text">焦点事件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#鼠标与滚轮事件"><span class="toc-text">鼠标与滚轮事件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#键盘与文本事件"><span class="toc-text">键盘与文本事件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#复合事件"><span class="toc-text">复合事件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#变动事件"><span class="toc-text">变动事件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#HTML5事件"><span class="toc-text">HTML5事件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#设备事件"><span class="toc-text">设备事件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#触摸与手势事件"><span class="toc-text">触摸与手势事件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#内存和性能"><span class="toc-text">内存和性能</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#事件委托"><span class="toc-text">事件委托</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#移除事件处理程序"><span class="toc-text">移除事件处理程序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模拟事件"><span class="toc-text">模拟事件</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#DOM中的事件模拟"><span class="toc-text">DOM中的事件模拟</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#IE中的事件模拟"><span class="toc-text">IE中的事件模拟</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#小结"><span class="toc-text">小结</span></a></li></ol></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/28/javascript学习之一/">javascript学习之一</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/网站搭建学习/">网站搭建学习</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/伸手党/" style="font-size: 15px;">伸手党</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="undefined" title="暂无" target="_blank">暂无</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">胡文(Christine Hu).</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script><script>window._config = { showScore: true };
 (function(){ 
   var appid = 'cytMxV10H'; 
