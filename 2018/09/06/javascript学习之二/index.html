@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Christine.Hu's Blog"><title>javascript学习之二 | HuWen's Blog</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">javascript学习之二</h1><a id="logo" href="/.">HuWen's Blog</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">javascript学习之二</h1><div class="post-meta"><a href="/2018/09/06/javascript学习之二/#comments" class="comment-count"><i id="changyan_count_unit" data-xid="2018/09/06/javascript学习之二/"></i>留言,<i id="changyan_parti_unit" data-xid="2018/09/06/javascript学习之二/"></i>参与</a><p><span class="date">Sep 06, 2018</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h3 id="javascript学习14章（表单的基础知识）"><a href="#javascript学习14章（表单的基础知识）" class="headerlink" title="javascript学习14章（表单的基础知识）"></a><center>javascript学习14章（表单的基础知识）</center></h3><hr>
+<h4 id="表单的基础知识"><a href="#表单的基础知识" class="headerlink" title="表单的基础知识"></a>表单的基础知识</h4><blockquote>
+<p>在HTML中，表单是由form元素来表示的，而在JavaScript中。表单对应的则是HTMLForm-Element类型。</p>
+</blockquote>
+<p>取得form元素引用的方式</p>
+<ul>
+<li>添加id属性，然后用getElementById()获取</li>
+<li>通过document.forms可以获取页面中的所有的表单。在这个集合中，可以通过索引或name来取得特定的表单<br><code>var firstForm = document.forms[0]</code><br><code>var myForm = document.forms[&quot;form2&quot;]</code></li>
+<li><del>~通过document.form2可以访问到名为form2的表单。不过不推荐</del>~</li>
+</ul>
+<h5 id="提交表单"><a href="#提交表单" class="headerlink" title="提交表单"></a>提交表单</h5><p>只要我们点击一下代码生成的按钮，就可以提交表单<br><code>&lt;input type=&quot;submit&quot; value=&quot;Submit Form&quot;/&gt;</code><br><code>&lt;button type=&quot;submit&quot;&gt;Submit Form&lt;/button&gt;</code><br><code>&lt;input type=&quot;image&quot; src=&quot;graphic.gif&quot;/&gt;</code><br><br><br>为了避免重复提交表单</p>
+<ul>
+<li>在第一次提交表单后就禁用提交按钮</li>
+<li>利用onsubmit事件处理程序取消后续的表单操作</li>
+</ul>
+<h5 id="重置表单"><a href="#重置表单" class="headerlink" title="重置表单"></a>重置表单</h5><p>当用户单击重置按钮时，表单会被重置。使用 type 特性值为”reset”的input或button都可以创建重置按钮<br><code>&lt;input type=&quot;reset&quot; value=&quot;Reset Form&quot;/&gt;</code><br><code>&lt;button type=&quot;reset&quot;&gt;Reset Form&lt;/button&gt;</code></p>
+<h5 id="表单字段"><a href="#表单字段" class="headerlink" title="表单字段"></a>表单字段</h5><blockquote>
+<p>每个表单都有elements属性，该属性是表单中所有表单元素（字段）的集合，可以按照位置和name的特性来访问它们。</p>
+</blockquote>
+<ul>
+<li>共有的表单字段属性</li>
+<li>共有的表单字段方法：focus()和blur()</li>
+<li>共有的表单字段事件</li>
+</ul>
+<hr>
+<h4 id="文本框脚本"><a href="#文本框脚本" class="headerlink" title="文本框脚本"></a>文本框脚本</h4><h5 id="选择文本"><a href="#选择文本" class="headerlink" title="选择文本"></a>选择文本</h5><blockquote>
+<p>用于选择文本框中的所有文本。</p>
+</blockquote>
+<ul>
+<li>选择（select）事件</li>
+<li>取得选择的文本<blockquote>
+<p>添加2个属性：selectionStart和selectionEnd</p>
+</blockquote>
+</li>
+<li>选择部分文本<blockquote>
+<p>选择文本框中的部分文档：setSelectionRange()<br>IE8及之前版本:</p>
+</blockquote>
+<pre><code><br>   var range=textBox.createTextRange();<br>   range.collapse(true);<br>   range.moveStart(“character”,0);<br>   range.moveEnd(“character”,3);<br>   range.select()<br></code></pre><h5 id="过滤输入"><a href="#过滤输入" class="headerlink" title="过滤输入"></a>过滤输入</h5></li>
+<li>屏蔽字符</li>
+<li>操作剪贴板</li>
+</ul>
+<h5 id="自动切换焦点"><a href="#自动切换焦点" class="headerlink" title="自动切换焦点"></a>自动切换焦点</h5><h5 id="HTML5约束验证API"><a href="#HTML5约束验证API" class="headerlink" title="HTML5约束验证API"></a>HTML5约束验证API</h5><ul>
+<li>必填字段(required)</li>
+<li>其他输入类型（url,email,number,range,datatime,datatime-local,date,month,week,time）</li>
+<li>数值范围(min,max,step)</li>
+<li>输入模式 (pattern属性)</li>
+<li>检测有效性（checkValidity）\</li>
+<li>禁用验证<blockquote>
+<p>通过设置novalidate属性，可以告诉表单不进行验证，如果存在多个提交按钮，为了指定某个提交按钮不需要验证表单，可以在相应的按钮上添加formnovalidate属性。</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h4 id="选择框脚本"><a href="#选择框脚本" class="headerlink" title="选择框脚本"></a>选择框脚本</h4><blockquote>
+<p>选择框是通过select和option元素组成的。除了所有表单共有的属性和方法以外，HTMLSelectElement类型还提供了下列属性和方法。</p>
+<ul>
+<li>add</li>
+<li>multiple</li>
+<li>remove</li>
+<li>selectIndex</li>
+<li>size</li>
+</ul>
+</blockquote>
+<h5 id="选择选项"><a href="#选择选项" class="headerlink" title="选择选项"></a>选择选项</h5><h5 id="添加选项"><a href="#添加选项" class="headerlink" title="添加选项"></a>添加选项</h5><ul>
+<li>方法1<pre><code>
+var newOption=document.createElement("option");
+newOption.appendChild(document.createTextNode("option text"));
+newOption.setAttribute("value","Option value");
+selectBox.appendChild(newOption);
+</code></pre></li>
+<li><p>方法2</p>
+<pre><code>
+var newOption2=new Option("newOption2","newOption2 Value");
+selectBox.appendChild(newOption2)  //在IE8及之前版本中有问题
+</code></pre>
+</li>
+<li><p>方法3(最佳实践)<br><pre><code><br>var newOption3=new Option(“newOption3”,”newOption3 Value”);<br>selectBox.add(newOption3,undefined)  //最佳实践<br></code></pre></p>
+<h5 id="移除选项"><a href="#移除选项" class="headerlink" title="移除选项"></a>移除选项</h5></li>
+<li>removeChild()</li>
+<li>remove()</li>
+<li>设置为null<h5 id="移动和重排选项"><a href="#移动和重排选项" class="headerlink" title="移动和重排选项"></a>移动和重排选项</h5><blockquote>
+<p>使用DOM中的appendChild方法，就可以将第一个选择框中的选项直接移动到第二个选择框中。</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h4 id="表单序列化"><a href="#表单序列化" class="headerlink" title="表单序列化"></a>表单序列化</h4><p><strong> 浏览器是如何将数据发送给服务器的 </strong></p>
+<ul>
+<li>对表单字段的名称和值进行url编码，使用和号（&amp;）分隔</li>
+<li>不发送禁用的表单字段</li>
+<li>只发送勾选的复选框和单选按钮</li>
+<li>多选选择框中每个选中的值单独一个条目</li>
+<li>在单击提交按钮提交表单的情况下，也会发送提交按钮；否则不发送提交按钮，也包括type为image的input元素</li>
+<li>select元素的值，就是选中option的value值。如果option元素没有value特性，则是option元素的文本值。</li>
+</ul>
+<hr>
+<h4 id="富文本编辑"><a href="#富文本编辑" class="headerlink" title="富文本编辑"></a>富文本编辑</h4><blockquote>
+<p>这一技术的本质，就是在页面中嵌入一个包含空HTML页面的iframe.通过设置designMode属性，这个空白的HTML页面可以编辑。而编辑对象则是该页面的body元素的HTML代码。</p>
+</blockquote>
+<h5 id="使用contenteditable属性"><a href="#使用contenteditable属性" class="headerlink" title="使用contenteditable属性"></a>使用contenteditable属性</h5><blockquote>
+<p>可以把contenteditable属性应用给也页面中的任何元素，然后用户立即就可以编辑该元素。有三个可能的值：“true”表示打开，“false”表示关闭，“inherit”表示从父元素那里继承。</p>
+</blockquote>
+<h5 id="操作富文本"><a href="#操作富文本" class="headerlink" title="操作富文本"></a>操作富文本</h5><blockquote>
+<p>主要方式使用document.execCommand()。传递三个参数：要执行的命令名称、表示浏览器是否该为当前命令提供用户界面的一个布尔值（为了确保跨浏览器的兼容性，应该始终设置为false）和执行命令必须的一个值（如不需要传值，则传递null）</p>
+</blockquote>
+<h5 id="富文本选区"><a href="#富文本选区" class="headerlink" title="富文本选区"></a>富文本选区</h5><blockquote>
+<p>使用框架的getSelection()方法，可以确定实际选择的文本</p>
+</blockquote>
+<h5 id="表单与富文本"><a href="#表单与富文本" class="headerlink" title="表单与富文本"></a>表单与富文本</h5><hr>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4></div><div class="tags"><a href="/tags/JavaScript/">JavaScript</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2018/08/28/javascript学习之一/" class="next">javascript学习之一</a></div><div id="comments"><div id="SOHUCS" sid="2018/09/06/javascript学习之二/"></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#javascript学习14章（表单的基础知识）"><span class="toc-text">javascript学习14章（表单的基础知识）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#表单的基础知识"><span class="toc-text">表单的基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#提交表单"><span class="toc-text">提交表单</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#重置表单"><span class="toc-text">重置表单</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#表单字段"><span class="toc-text">表单字段</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文本框脚本"><span class="toc-text">文本框脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#选择文本"><span class="toc-text">选择文本</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#过滤输入"><span class="toc-text">过滤输入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#自动切换焦点"><span class="toc-text">自动切换焦点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#HTML5约束验证API"><span class="toc-text">HTML5约束验证API</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择框脚本"><span class="toc-text">选择框脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#选择选项"><span class="toc-text">选择选项</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#添加选项"><span class="toc-text">添加选项</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#移除选项"><span class="toc-text">移除选项</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#移动和重排选项"><span class="toc-text">移动和重排选项</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#表单序列化"><span class="toc-text">表单序列化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#富文本编辑"><span class="toc-text">富文本编辑</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用contenteditable属性"><span class="toc-text">使用contenteditable属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#操作富文本"><span class="toc-text">操作富文本</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#富文本选区"><span class="toc-text">富文本选区</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#表单与富文本"><span class="toc-text">表单与富文本</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#小结"><span class="toc-text">小结</span></a></li></ol></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/javascript学习之二/">javascript学习之二</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/28/javascript学习之一/">javascript学习之一</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/网站搭建学习/">网站搭建学习</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/伸手党/" style="font-size: 15px;">伸手党</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="undefined" title="暂无" target="_blank">暂无</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">胡文(Christine Hu).</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script><script>window._config = { showScore: true };
+(function(){ 
+  var appid = 'cytMxV10H'; 
+  var conf = 'f2bf5a341a1e6f49c1fc28720815b3cd'; 
+  var width = window.innerWidth || document.documentElement.clientWidth; 
+  var nodes =document.getElementsByTagName("head")[0]||document.head||document.documentElement;
+  if (/(Android|iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && width < 750) {  
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+  }
+  else { 
+    var loadJs=function(d,a){
+      var b=document.createElement("script");b.setAttribute("type","text/javascript");
+      b.setAttribute("charset","UTF-8");
+      b.setAttribute("src",d);
+      if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}
+      nodes.appendChild(b)
+    };
+    loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); 
+  } 
+  var loadCss = function(cssString){  
+    var style=document.createElement("style");  
+    style.setAttribute("type", "text/css");  
+    if(style.styleSheet){// IE  
+        style.styleSheet.cssText = cssString;  
+    } else {// w3c  
+        var cssText = document.createTextNode(cssString);  
+        style.appendChild(cssText);  
+    }
+    nodes.appendChild(style);
+  }
+  window.onload=function(){loadCss('.module-hot-topic,.module-cmt-float-bar{display:none!important}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .cbox-prompt-w span.prompt-empty-w,#SOHUCS #SOHU_MAIN .module-cmt-float-bar .wrap-cont-w .cont-form-w .form-text-w span.text-null,#SOHUCS #SOHU_MAIN .module-cmt-float-bar .wrap-cont-w .cont-minwidth-w div.cont-comment-w a.comment-link-w,#SOHUCS #SOHU_MAIN .module-cmt-float-bar .wrap-cont-w .cont-minwidth-w div.cont-comment-w span.comment-text-w,#SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w div.service-wrap-w a:hover,#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w div.header-login,#SOHUCS #SOHU_MAIN .module-cmt-header .section-title-w .title-user-w .user-wrap-w span.wrap-name-w,#SOHUCS #SOHU_MAIN .module-cmt-list .action-click-gw span.click-disable-eg a em.icon-name-bg,#SOHUCS #SOHU_MAIN .module-cmt-list .block-title-gw ul li div.title-name-gw,#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .cmt-list-number .comment-number span.cy-number,#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .cmt-list-number span.comment-number,#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .type-lists li.active,#SOHUCS #SOHU_MAIN .module-cmt-list .msg-wrap-gw .wrap-action-gw .action-click-gw span a:hover,#SOHUCS #SOHU_MAIN .module-cmt-list .picture-box-gw div.box-action-gw a:hover,#SOHUCS #SOHU_MAIN .module-cmt-list .wrap-action-gw .action-click-gw span a:hover em.icon-name-bg,#SOHUCS #SOHU_MAIN .module-cmt-list .wrap-user-gw span.user-name-gw a{color:#40759b!important}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-border-t div.post-wrap-border-t-r,#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w div.post-wrap-border-l,#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w div.post-wrap-border-r{display:none!important}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-border-t div.post-wrap-border-t-l{background:#FFF!important;top:-2px!important}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw div.wrapper-image-dw,#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w div.post-wrap-main,#SOHUCS #SOHU_MAIN .module-cmt-float-bar .wrap-cont-w .cont-form-w div.form-text-w,#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w div.header-login,#SOHUCS #SOHU_MAIN .module-cmt-list .module-cmt-box .post-wrap-w div.post-wrap-main{border:1px solid #e6e6e6!important;border-radius:20px 20px 20px 20px;margin:0!important}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a .btn-fw{width:130px!important;height:34px!important;line-height:33px!important;font-size:17px!important;background:#5483b1!important;border-radius:20px!important;color:#FFF!important;-webkit-box-shadow:0 -1px 4px #5483b1 inset;box-shadow:0 -1px 10px #5483b1 inset}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a .btn-fw:before{content:"发表评论"}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a:hover .btn-fw{color:#40759b!important;background:#FFF!important}#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .type-lists li{background:none!important;border-bottom:1px solid #e6e6e6}#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .type-lists li.active{border:1px solid #e6e6e6;border-radius:10px 10px 0 0;border-bottom:none}#SOHUCS #SOHU_MAIN .module-cmt-list .block-title-gw ul li .title-name-gw div.title-name-gw-tag{background:#5483b1!important;border-radius:3px}#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type div.cmt-list-border{background-color:#e6e6e6!important}#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item{border:1px solid #e6e6e6!important}#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item .nt-logo{text-align:center;line-height:40px;border-radius:50%!important;background:#e6e6e6!important}#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item .nt-logo:before{content:"畅";font-size:22px;color:#FFF}#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item a.nt-text,#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item a.nt-text i{color:#5483b1!important}#SOHUCS #SOHU_MAIN .module-cmt-header .section-title-w .title-user-w .user-wrap-w{background:#FFF!important}');};
+})();</script><script src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script></body></html>
