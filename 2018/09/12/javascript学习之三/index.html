@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Christine.Hu's Blog"><title>javascript学习之三 | HuWen's Blog</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">javascript学习之三</h1><a id="logo" href="/.">HuWen's Blog</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">javascript学习之三</h1><div class="post-meta"><a href="/2018/09/12/javascript学习之三/#comments" class="comment-count"><i id="changyan_count_unit" data-xid="2018/09/12/javascript学习之三/"></i>留言,<i id="changyan_parti_unit" data-xid="2018/09/12/javascript学习之三/"></i>参与</a><p><span class="date">Sep 12, 2018</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h3 id="javascript学习15章（使用canvas绘图）"><a href="#javascript学习15章（使用canvas绘图）" class="headerlink" title="javascript学习15章（使用canvas绘图）"></a><center>javascript学习15章（使用canvas绘图）</center></h3><hr>
+<h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><pre><code>
+    var drawing=document.getElementById("drawing");
+     //确定浏览器是否支持canvas元素
+     if(drawing.getContext){
+         var context=drawing.getContext("2d");
+     }
+</code></pre>
+
+<p>使用toDataURL()方法，可以导出在canvas上绘制的图像。这个方法接受一个参数，即图像的MIME类型格式，而且是用于创建图像的任何上下文。<br><code>var imageUrl=drawing.toDataURL(&quot;img/png&quot;)</code></p>
+<hr>
+<h4 id="2D上下文"><a href="#2D上下文" class="headerlink" title="2D上下文"></a>2D上下文</h4><p>2D上下文的坐标开始于canvas元素的左上角，原点坐标是（0，0）.所有坐标值都基于这个原点计算，x越大表示越靠右，y越大表示越靠下。默认情况下，width和height表示水平和垂直2个方向上的可用元素数目。</p>
+<h5 id="填充和描边"><a href="#填充和描边" class="headerlink" title="填充和描边"></a>填充和描边</h5><h5 id="绘制矩形"><a href="#绘制矩形" class="headerlink" title="绘制矩形"></a>绘制矩形</h5><pre><code>
+// *************绘制矩形*******************
+  // 绘制红色矩形
+  context.fillStyle="#ff0000";
+  context.fillRect(10,10,50,50);
+  // 绘制蓝色半透明矩形
+  context.fillStyle="rgba(0,0,255,0.5)";
+  context.fillRect(30,30,50,50);
+  //清除两个矩形重叠地方的小矩形
+  context.clearRect(40,40,10,10)
+  // 绘制红色描边矩形
+  context.strokeStyle="#ff0000";
+  context.strokeRect(110,110,50,50);
+  // 绘制蓝色半透明描边矩形
+  context.strokeStyle="rgba(0,0,255,0.5)";
+  context.strokeRect(130,130,50,50);
+</code></pre>
+
+<h5 id="绘制路径"><a href="#绘制路径" class="headerlink" title="绘制路径"></a>绘制路径</h5><p>首先必须要调用beginPath()方法,表示要开始绘制新路径</p>
+<ul>
+<li>arc(x,y,radius,startAngle,endAngle,counterclockwise):以x,y为圆心绘制一条圆弧,弧线半径为radius,起始和结束角度分别是startAngle,endAngle.最后一个参数表示startAngle,endAngle是否按照逆时针方向计算,值为false表示按顺时针方向计算.</li>
+<li>arcTo(x1,y1,x2,y2,radius):从上一点绘制一条弧线,到(x2,y2)为止,并以给定的半径radius穿过(x1,y1)</li>
+<li>bezierCurveTo(c1x,c1y,c2x,c2y,x,y):从上一点开始绘制一条曲线,到(x,y)为止,并且以(c1x,c1y)和(,c2x,c2y)为控制点</li>
+<li>lineTo(x,y):从上一点开始绘制一条直线,到(x,y)为止</li>
+<li>moveTo(x,y):将绘画游标移动到(x,y),不画线</li>
+<li>quadraticCurveTo(cx,cy,x,y):从上一点开始绘制一条二次曲线,到(x,y)为止,并且以(cx,cy)作为控制点.</li>
+<li>rect(x,y,width,height):从点(x,y)开始绘制一个矩形,高度分别由width,height指定.<br>如果想绘制一条连接到路径起点的线条，可以调用closePath()<br>填充:fill()<br>路径描边：stroke()<br>路径上创建剪切区域：clip()<br><pre><code><br>//<strong><strong><strong>*</strong></strong></strong>绘制一个不带数字的时钟<strong><strong><strong><strong>***</strong></strong></strong></strong><br>//开始路径<br>context.beginPath();<br>//开始绘制外圆<br>context.arc(100,100,99,0,2<em>Math.PI,false);<br>//绘制内圆<br>context.moveTo(194,100);<br>context.arc(100,100,94,0,2</em>Math.PI,false);<br>//绘制分针<br>context.moveTo(100,100);<br>context.lineTo(100,15);<br>//绘制时针<br>context.moveTo(100,100);<br>context.lineTo(35,100);<br>// 描边路径<br>context.strokeStyle=”#000”;<br>context.stroke();<br></code></pre><h5 id="绘制文本"><a href="#绘制文本" class="headerlink" title="绘制文本"></a>绘制文本</h5><blockquote>
+<p>主要有2个方法:fillText()和strokeText().这2个方法都可以接收4个参数:要绘制的文本字符串,x坐标,y坐标和可选的最大像素宽度.</p>
+</blockquote>
+</li>
+</ul>
+<p>有以下属性:</p>
+<ul>
+<li>font:样式,大小及字体</li>
+<li>textAlign:文本对齐方式,值有”start”,”end”,”left”,”right”和”center”</li>
+<li>textBaseline:文本基线,值有top,hanging,middle,alphabetic,ideographic,bottom</li>
+</ul>
+<pre><code>
+context.font="bold 14px Arial";
+context.textAlign="center";
+context.textBaseline="middle";
+context.fillText("3",188,100)
+context.fillText("6",100,188)
+context.fillText("9",12,100)
+context.fillText("12",100,12)
+
+// measureText(),返回接受文本的width属性
+var fontSize=100;
+context.font=fontSize+"px Arial";
+while(context.measureText("hello world").width > 140){
+    fontSize--;
+    context.font=fontSize+"px Arial";
+}
+context.fillText("hello world",210,210);
+context.fillText("font size is"+fontSize,210,250);
+</code></pre>
+
+<h5 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h5><p>可以通过如下方法来修改变换矩阵</p>
+<ul>
+<li>rotate(angle): 弧度</li>
+<li>scale(scaleX,scaleY):缩放图像,在x方向乘以scaleX,在y方向上乘以scaleY</li>
+<li>translate(x,y):将坐标原点移动到(x,y).执行这个变换之后,坐标(0,0)会变成*之前由(x,y)</li>
+<li>transform(m1_1,m1_2,m2_1,m2_2,dx,dy):直接修改矩阵,方式是乘以以下矩阵.<br>m1_1  m1_2  dx<br>m2_1  m2_2  dy<br>0     0     1</li>
+<li>setTransform(m1_1,m1_2,m2_1,m2_2,dx,dy):将变换矩阵重置为默认状态,然后再调用transform()</li>
+</ul>
+<p>save():调用这个方法后，当时所有的设置都会进入一个栈结构，得以妥善保管。<br>restore():在保存设置的栈结构中向前返回一级</p>
+<h5 id="绘制图像"><a href="#绘制图像" class="headerlink" title="绘制图像"></a>绘制图像</h5><blockquote>
+<p>drawImage():把一幅图像绘制到画布上,总共需要传入9个参数：要绘制的图像、源图像的x坐标、源图像的y坐标、源图像的宽度、源图像的高度、目标图像的x坐标、目标图像的y坐标、目标图像的宽度、目标图像的高度。</p>
+</blockquote>
+<pre><code>
+var image=document.images[0];
+image.onload=function(){
+    context.drawImage(image,10,10);
+    context.drawImage(image,50,10,20,30);
+    context.drawImage(image, 0, 10, 150, 150, 0, 100, 100, 100);
+
+}
+</code></pre>
+
+<h5 id="阴影"><a href="#阴影" class="headerlink" title="阴影"></a>阴影</h5><ul>
+<li>shadowColor: 用css颜色格式表示的阴影颜色，默认是黑色</li>
+<li>shadowOffsetX: 形状或路径x轴方向的阴影偏移量，默认为0</li>
+<li>shadowOffsetY: 形状或路径y轴方向的阴影偏移量，默认为0</li>
+<li>shadowBlur: 模糊的像素数，默认0，即不模糊</li>
+</ul>
+<pre><code>
+// 设置阴影
+context.shadowOffsetX=5;
+context.shadowOffsetY=5;
+context.shadowBlur=4;
+context.shadowColor="rgba(0,0,0,0.5)";
+</code></pre>
+
+<h5 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h5><p> 要创建一个新的线性渐变:<br> ① 可以调用createLinearGradient()方法。这个方法接受4个参数:起点x坐标，起点的y坐标，终点的x坐标，终点的y坐标。<br> ② 使用addColorStop()方法来指定色标。这个方法接收两个参数：色标位置和css颜色值。色标位置是0（开始的颜色）和1（结束的位置）之间的数字</p>
+<pre><code>
+var gradient=context.createLinearGradient(230,230,270,270);
+gradient.addColorStop(0,"white");
+gradient.addColorStop(1,"black");
+
+context.fillStyle=gradient;
+context.fillRect(230,230,50,50);
+</code></pre>
+
+<p>要创建径向渐变（或放射性渐变）<br>① 可以调用createRadialGradient()方法。这个方法接受6个参数,对应2个圆的圆心和半径。<br>② 使用addColorStop()方法来指定色标。这个方法接收两个参数：色标位置和css颜色值。色标位置是0（开始的颜色）和1（结束的位置）之间的数字</p>
+<pre><code>
+var gradient1=context.createRadialGradient(555,555,10,550,550,30);
+gradient1.addColorStop(0,"white");
+gradient1.addColorStop(1,"black");
+
+context.fillStyle=gradient1;
+context.fillRect(530,530,50,50);
+</code></pre>
+##### 模式 #####
+>其实是重复的图像，可以用来填充或描边图形。要创建一个模式，可以调用createPattern()方法并传入两个参数：一个HTML<img>元素和一个表示如何重复的字符串。
+
+ *** createPattern()方法的第一个参数也可以是vedio和canvas元素 ***
+
+<pre><code>
+var pattern=context.createPattern(image,"repeat");
+context.fillStyle=pattern;
+context.fillRect(10,10,300,300);
+</code></pre>
+
+<h5 id="使用图像数据"><a href="#使用图像数据" class="headerlink" title="使用图像数据"></a>使用图像数据</h5><blockquote>
+<p>2D上下文的长处是，可以通过getImageData()取得原始图像的数据。这个方法接受4个参数：要取得其数据的画面区域的x和y坐标以及该区域的像素宽度和高度。</p>
+</blockquote>
+<p><code>var imageData=context.getImageData(10,5,50,50);</code></p>
+<h5 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h5><ul>
+<li>globalAlpha: 是一个介于0和1之间的值，用于指定所有绘制的透明度</li>
+<li>globalCompositionOperation:表示后绘制的图形怎样与先绘制的图形结合</li>
+</ul>
+<hr>
+<h4 id="WebGL"><a href="#WebGL" class="headerlink" title="WebGL"></a>WebGL</h4><h5 id="类型化数组"><a href="#类型化数组" class="headerlink" title="类型化数组"></a>类型化数组</h5><blockquote>
+<p>类型化数组的核心就是一个名为ArrayBuffer的类型。每个ArrayBuffer对象表示的只是内存中指定的字节数，但不会指定这些字节用于保存什么类型的数据。</p>
+</blockquote>
+<p><code>var buffer=new ArrayBuffer(20);</code><br>创建ArrayBuffer对象后，能通过该对象获得的信息只有它包含的字节数，方法是访问其byteLength<br><code>var bytes=buffer.byteLength</code></p>
+<ul>
+<li>视图<br>使用ArrayBuffer的一种特别的方式就是用它来创建数组缓冲器视图。<br>其中最常见的视图是DataView,通过它可以选择ArrayBuffer中的一小段字节。为此，可以在创建的DataView实例的时候传入一个ArrayBuffer、一个可选的字节偏移量和一个可选的要选择的字节数。<pre><code>
+//基于整个缓冲器创建一个新视图
+var view = new DataView(buffer);
+//创建一个开始于字节9的新视图
+var view = new DataView(buffer,9);
+//创建一个字节9开始到字节18的新视图
+var view = new DataView(buffer,9,10);
+</code></pre></li>
+<li>类型化视图</li>
+</ul>
+<h5 id="webGL上下文"><a href="#webGL上下文" class="headerlink" title="webGL上下文"></a>webGL上下文</h5><p>（看的比较迷，暂时放弃）</p>
+<ul>
+<li>常量</li>
+<li>方法命名<blockquote>
+<p>方法名的后缀会包含参数个数（1到4）和接收的数据类型（f表示浮点数，i表示整数）。例如，gl.uniform4i意味着要接收4个浮点数。也有很多方法接收数组参组参数，这样的方法其名字中会包含字母v。因此，gl.uniform3iv会包含3个值的整数数组。</p>
+</blockquote>
+</li>
+<li>准备绘图</li>
+<li>视口与坐标</li>
+<li>缓冲区</li>
+<li>错误</li>
+<li>着色器</li>
+<li>编写着色器</li>
+<li>编写着色器程序</li>
+<li>为着色器传入值</li>
+<li>调试着色器和程序</li>
+<li>绘图</li>
+<li>纹理</li>
+<li>读取像素<h5 id="支持"><a href="#支持" class="headerlink" title="支持"></a>支持</h5></li>
+</ul>
+<hr>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4></div><div class="tags"><a href="/tags/JavaScript/">JavaScript</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2018/09/06/javascript学习之二/" class="next">javascript学习之二</a></div><div id="comments"><div id="SOHUCS" sid="2018/09/12/javascript学习之三/"></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#javascript学习15章（使用canvas绘图）"><span class="toc-text">javascript学习15章（使用canvas绘图）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本用法"><span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2D上下文"><span class="toc-text">2D上下文</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#填充和描边"><span class="toc-text">填充和描边</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#绘制矩形"><span class="toc-text">绘制矩形</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#绘制路径"><span class="toc-text">绘制路径</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#绘制文本"><span class="toc-text">绘制文本</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#变换"><span class="toc-text">变换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#绘制图像"><span class="toc-text">绘制图像</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#阴影"><span class="toc-text">阴影</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#渐变"><span class="toc-text">渐变</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用图像数据"><span class="toc-text">使用图像数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#合成"><span class="toc-text">合成</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#WebGL"><span class="toc-text">WebGL</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#类型化数组"><span class="toc-text">类型化数组</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#webGL上下文"><span class="toc-text">webGL上下文</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#支持"><span class="toc-text">支持</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#小结"><span class="toc-text">小结</span></a></li></ol></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/12/javascript学习之三/">javascript学习之三</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/javascript学习之二/">javascript学习之二</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/28/javascript学习之一/">javascript学习之一</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/网站搭建学习/">网站搭建学习</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/伸手党/" style="font-size: 15px;">伸手党</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="undefined" title="暂无" target="_blank">暂无</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">胡文(Christine Hu).</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script><script>window._config = { showScore: true };
+(function(){ 
+  var appid = 'cytMxV10H'; 
+  var conf = 'f2bf5a341a1e6f49c1fc28720815b3cd'; 
+  var width = window.innerWidth || document.documentElement.clientWidth; 
+  var nodes =document.getElementsByTagName("head")[0]||document.head||document.documentElement;
+  if (/(Android|iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && width < 750) {  
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+  }
+  else { 
+    var loadJs=function(d,a){
+      var b=document.createElement("script");b.setAttribute("type","text/javascript");
+      b.setAttribute("charset","UTF-8");
+      b.setAttribute("src",d);
+      if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}
+      nodes.appendChild(b)
+    };
+    loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); 
+  } 
+  var loadCss = function(cssString){  
+    var style=document.createElement("style");  
+    style.setAttribute("type", "text/css");  
+    if(style.styleSheet){// IE  
+        style.styleSheet.cssText = cssString;  
+    } else {// w3c  
+        var cssText = document.createTextNode(cssString);  
+        style.appendChild(cssText);  
+    }
+    nodes.appendChild(style);
+  }
+  window.onload=function(){loadCss('.module-hot-topic,.module-cmt-float-bar{display:none!important}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .cbox-prompt-w span.prompt-empty-w,#SOHUCS #SOHU_MAIN .module-cmt-float-bar .wrap-cont-w .cont-form-w .form-text-w span.text-null,#SOHUCS #SOHU_MAIN .module-cmt-float-bar .wrap-cont-w .cont-minwidth-w div.cont-comment-w a.comment-link-w,#SOHUCS #SOHU_MAIN .module-cmt-float-bar .wrap-cont-w .cont-minwidth-w div.cont-comment-w span.comment-text-w,#SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w div.service-wrap-w a:hover,#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w div.header-login,#SOHUCS #SOHU_MAIN .module-cmt-header .section-title-w .title-user-w .user-wrap-w span.wrap-name-w,#SOHUCS #SOHU_MAIN .module-cmt-list .action-click-gw span.click-disable-eg a em.icon-name-bg,#SOHUCS #SOHU_MAIN .module-cmt-list .block-title-gw ul li div.title-name-gw,#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .cmt-list-number .comment-number span.cy-number,#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .cmt-list-number span.comment-number,#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .type-lists li.active,#SOHUCS #SOHU_MAIN .module-cmt-list .msg-wrap-gw .wrap-action-gw .action-click-gw span a:hover,#SOHUCS #SOHU_MAIN .module-cmt-list .picture-box-gw div.box-action-gw a:hover,#SOHUCS #SOHU_MAIN .module-cmt-list .wrap-action-gw .action-click-gw span a:hover em.icon-name-bg,#SOHUCS #SOHU_MAIN .module-cmt-list .wrap-user-gw span.user-name-gw a{color:#40759b!important}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-border-t div.post-wrap-border-t-r,#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w div.post-wrap-border-l,#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w div.post-wrap-border-r{display:none!important}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-border-t div.post-wrap-border-t-l{background:#FFF!important;top:-2px!important}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw div.wrapper-image-dw,#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w div.post-wrap-main,#SOHUCS #SOHU_MAIN .module-cmt-float-bar .wrap-cont-w .cont-form-w div.form-text-w,#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w div.header-login,#SOHUCS #SOHU_MAIN .module-cmt-list .module-cmt-box .post-wrap-w div.post-wrap-main{border:1px solid #e6e6e6!important;border-radius:20px 20px 20px 20px;margin:0!important}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a .btn-fw{width:130px!important;height:34px!important;line-height:33px!important;font-size:17px!important;background:#5483b1!important;border-radius:20px!important;color:#FFF!important;-webkit-box-shadow:0 -1px 4px #5483b1 inset;box-shadow:0 -1px 10px #5483b1 inset}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a .btn-fw:before{content:"发表评论"}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a:hover .btn-fw{color:#40759b!important;background:#FFF!important}#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .type-lists li{background:none!important;border-bottom:1px solid #e6e6e6}#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .type-lists li.active{border:1px solid #e6e6e6;border-radius:10px 10px 0 0;border-bottom:none}#SOHUCS #SOHU_MAIN .module-cmt-list .block-title-gw ul li .title-name-gw div.title-name-gw-tag{background:#5483b1!important;border-radius:3px}#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type div.cmt-list-border{background-color:#e6e6e6!important}#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item{border:1px solid #e6e6e6!important}#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item .nt-logo{text-align:center;line-height:40px;border-radius:50%!important;background:#e6e6e6!important}#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item .nt-logo:before{content:"畅";font-size:22px;color:#FFF}#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item a.nt-text,#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item a.nt-text i{color:#5483b1!important}#SOHUCS #SOHU_MAIN .module-cmt-header .section-title-w .title-user-w .user-wrap-w{background:#FFF!important}');};
+})();</script><script src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script></body></html>
