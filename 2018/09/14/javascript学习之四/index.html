@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Christine.Hu's Blog"><title>javascript学习之四 | HuWen's Blog</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">javascript学习之四</h1><a id="logo" href="/.">HuWen's Blog</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title">javascript学习之四</h1><div class="post-meta"><a href="/2018/09/14/javascript学习之四/#comments" class="comment-count"><i id="changyan_count_unit" data-xid="2018/09/14/javascript学习之四/"></i>留言,<i id="changyan_parti_unit" data-xid="2018/09/14/javascript学习之四/"></i>参与</a><p><span class="date">Sep 14, 2018</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h3 id="javascript学习16章（HTML5脚本编程）"><a href="#javascript学习16章（HTML5脚本编程）" class="headerlink" title="javascript学习16章（HTML5脚本编程）"></a><center>javascript学习16章（HTML5脚本编程）</center></h3><hr>
+<h3 id="跨文档消息的传递"><a href="#跨文档消息的传递" class="headerlink" title="跨文档消息的传递"></a>跨文档消息的传递</h3><blockquote>
+<p>简称为XDM,指的是在来自不同域的页面间传递消息</p>
+</blockquote>
+<p>发送：<br>XDM的核心是postMessage方法，该方法接收两个参数：一条消息和一个表示消息接收方来自哪个域的字符串。第二个参数对保障安全通信非常重要。<br>接收：<br>接收到XDM消息时，会触发window对象的message事件。触发message事件后，传递给onmessage处理程序的事件对象包含以下三方面的重要信息。</p>
+<pre><code>
+function send() {
+    var data = document.querySelector('#data').value;
+    window.frames[0].postMessage(data, 'http://localhost:9022/'); // 触发跨域子页面的messag事件
+}
+window.addEventListener('message', function(messageEvent) {
+    var data = messageEvent.data;
+    console.info('message from child:', data);
+}, false);
+</code></pre>
+
+
+
+<hr>
+<h3 id="原生拖放"><a href="#原生拖放" class="headerlink" title="原生拖放"></a>原生拖放</h3><h4 id="拖放事件"><a href="#拖放事件" class="headerlink" title="拖放事件"></a>拖放事件</h4><p>拖放某个元素时，将依次触发下列事件：</p>
+<ul>
+<li>dragstart：拖动开始时，触发dragstart事件</li>
+<li>drag：触发dragstart事件后，随即会触发drag事件，而且在元素被拖动期间会持续触发该事件。</li>
+<li>dragend：当拖动停止时（无论是将元素放到有效的目标，还是放到无效的目标上），会触发dragend事件。</li>
+</ul>
+<p>当某个元素被拖动到一个有效的放置目标上时，下列事件会依次发生：</p>
+<ul>
+<li>dragenter：有元素被拖动放置到目标上，会触发dragenter事件。</li>
+<li>dragover：在被拖动的元素还在放置目标的范围内移动时，就会持续触发该事件。</li>
+<li>dragleave：如果元素被拖出放置目标，dragover不再发生，但会触发dragleave事件。</li>
+<li>drop：元素被放到了防止目标中，则会触发drop事件而不是drapleave事件。</li>
+</ul>
+<h4 id="自定义放置目标"><a href="#自定义放置目标" class="headerlink" title="自定义放置目标"></a>自定义放置目标</h4><p>可以将任何元素变成有效的放置目标，方法就是重写dragenter和dragover事件的默认行为。为了让Firefox支持正常的拖放，还要取消drop事件的默认行为，阻止它打开url:</p>
+<pre><code>
+var droptarget=document.getElementById("droptarget");
+EventUtil.addHandler(droptarget,"dragenter",function(event){
+    EventUtil.preventDefault(event);
+});
+EventUtil.addHandler(droptarget,"dragover",function(event){
+    EventUtil.preventDefault(event);
+});
+EventUtil.addHandler(droptarget,"drop",function(event){
+    EventUtil.preventDefault(event);
+})
+</code></pre>
+
+<h4 id="dataTransfer"><a href="#dataTransfer" class="headerlink" title="dataTransfer"></a>dataTransfer</h4><blockquote>
+<p>事件对象的一个属性，只能在拖放事件事件处理程序中访问dataTransfer对象。</p>
+</blockquote>
+<p>可以在dragstart事件处理程序中，调用setData()，手动保存自己要传输的数据，以便将来使用。<br>保存在dataTransfer对象中的数据只能在drop事件处理程序中读取。</p>
+<p>为了更好的在跨浏览器的情况下从dataTransfer对象中取得数据，最好在取得URL数据时检测两个值，而在取得文本数据时使用Text</p>
+<p><pre><code><br>var dataTransfer=event.dataTransfer;<br>//读取URL<br>var url = dataTransfer.getData(“url”) || dataTransfer.getData(“text/uri-list”);<br>//读取文本<br>var text=dataTransfer.getData(“Text”);<br></code></pre></p>
+<h4 id="dropEffect和effectAllowed"><a href="#dropEffect和effectAllowed" class="headerlink" title="dropEffect和effectAllowed"></a>dropEffect和effectAllowed</h4><blockquote>
+<p>通过它来确定被拖动的元素以及作为放置目标的元素能够接收什么操作。</p>
+</blockquote>
+<p>dropEffect：可以知道被拖动的元素能够执行哪种放置行为（必须在dragenter事件处理程序中针对放置目标来设置它）</p>
+<ul>
+<li>none：不能把拖动的元素放在这里</li>
+<li>move：应该把拖动元素移动到放置目标上</li>
+<li>copy：应该把拖动的元素复制到放置目标</li>
+<li>link：表示放置目标会打开拖动的元素</li>
+</ul>
+<p>effectAllowed：表示允许拖动元素是哪一种dropEffect（必须在dragstart事件处理程序设置effectAllowed属性）</p>
+<ul>
+<li>uninitiallized：没有给拖动元素设置任何放置行为。</li>
+<li>none：被拖动的元素不能有任何行为</li>
+<li>copy：只允许值为“copy”的dropEffect</li>
+<li>link：只允许值为“link”的dropEffect</li>
+<li>move：只允许值为“move”的dropEffect</li>
+<li>copyLink：只允许值为“copy”和“link”的dropEffect</li>
+<li>copyMove：只允许值为“copy”和“move”的dropEffect</li>
+<li>linkMove：只允许值为“link”和“move”的dropEffect</li>
+<li>all：允许任意的dropEffect</li>
+</ul>
+<h4 id="可拖动"><a href="#可拖动" class="headerlink" title="可拖动"></a>可拖动</h4><p>默认情况下，图像、链接和文本是可以拖动的。文本只有在选中的情况下才能拖动，而图像和链接则在任何时候都可以拖动。让其他元素拖动也有可能，为所有的HTML元素规定一个draggable属性，表示元素是否可以拖动。</p>
+<h4 id="其他成员"><a href="#其他成员" class="headerlink" title="其他成员"></a>其他成员</h4><hr>
+<h3 id="媒体元素"><a href="#媒体元素" class="headerlink" title="媒体元素"></a>媒体元素</h3><blockquote>
+<p>HTML5新增了两个与媒体相关的标签，让开发人员不必依赖任何插件就能在网页中嵌入跨浏览器的音频和视频内容。这两个标签就是<audio>和<video></video></audio></p>
+</blockquote>
+<h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><p>见书P487</p>
+<h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><p>见书P488</p>
+<h4 id="自定义媒体播放器"><a href="#自定义媒体播放器" class="headerlink" title="自定义媒体播放器"></a>自定义媒体播放器</h4><p><pre><code><br>EventUtil.addHandler(player,”canplaythrough”,function(){<br>        var player=document.getElementById(“player”),<br>            btn=document.getElementById(“video-btn”),<br>            curtime=document.getElementById(“curtime”),<br>            duration=document.getElementById(“duration”);<br>        //更新播放时间<br>        duration.innerHTML=player.duration;<br>        //为按钮添加事件处理程序<br>        EventUtil.addHandler(btn,”click”,function(event){<br>            if(player.paused){<br>                player.play();<br>                btn.value=”Paused”;<br>            }else{<br>                player.pause();<br>                btn.value=”Play”;<br>            }<br>        })<br>        //定时更新当前时间<br>        setInterval(function(){<br>            curtime.innerHTML=player.currentTime;<br>        },250)<br>    });<br></code></pre></p>
+<h4 id="检测编解码器的支持情况"><a href="#检测编解码器的支持情况" class="headerlink" title="检测编解码器的支持情况"></a>检测编解码器的支持情况</h4><p>这两个媒体元素都有一个canPlayType()方法，该方法接受一种格式/编解码器字符串（详情见P490），返回”probably”,”maybe”,””。空字串串为假值。</p>
+<h4 id="Audio类型"><a href="#Audio类型" class="headerlink" title="Audio类型"></a>Audio类型</h4><blockquote>
+<p>audio元素还有一个原生的JavaScript构造函数Audio.</p>
+</blockquote>
+<p><pre><code><br>var audio=new Audio(“sound.mp3”);<br>EventUtil.addHandler(audio,”canplaythrough”,function(event){<br>  audio.play();<br>});<br></code></pre></p>
+<hr>
+<h3 id="历史状态管理"><a href="#历史状态管理" class="headerlink" title="历史状态管理"></a>历史状态管理</h3><p>执行pushState后，新的状态信息就会被加入历史状态栈，而浏览器地址栏也会变成新的相对URL。但是，浏览器并不会真的向服务器发送请求，即使状态改变之后查询location.href也会返回与地址栏中相同的地址。第一个参数尽可能地提供初始化页面状态所需的各种信息，第二个参数目前还没有浏览器实现，因此可以只传入一个空字符串。</p>
+<p><pre><code><br> history.pushState({name:’hu1’},’’,”hu.html”);<br></code></pre><br>按下后退按钮，会触发window对象的poststate事件。poststate事件的时间对象有一个state属性，这个属性就包含着当初以第一个参数传递给pushState()的状态对象。</p>
+<p><pre><code><br>EventUtil.addHandler(window,”popstate”,function(event){<br>      var state=event.state;<br>      if(state){<br>          processState(state);<br>      }<br>  })<br></code></pre><br>要更新当前的状态，可以调用replaceState()。调用这个方法不会在历史状态栈中创建新状态，只会重写当前的状态。</p>
+<p><pre><code><br>history.replaceState({name:’hu’},’’)<br></code></pre></p>
+<hr>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4></div><div class="tags"><a href="/tags/JavaScript/">JavaScript</a></div><div class="post-share"><div class="bdsharebuttonbox"><span style="float:left;line-height: 28px;height: 28px;font-size:16px;font-weight:blod">分享到：</span><a href="#" data-cmd="more" class="bds_more"></a><a href="#" data-cmd="mshare" title="分享到一键分享" class="bds_mshare"></a><a href="#" data-cmd="fbook" title="分享到Facebook" class="bds_fbook"></a><a href="#" data-cmd="twi" title="分享到Twitter" class="bds_twi"></a><a href="#" data-cmd="linkedin" title="分享到linkedin" class="bds_linkedin"></a><a href="#" data-cmd="youdao" title="分享到有道云笔记" class="bds_youdao"></a><a href="#" data-cmd="evernotecn" title="分享到印象笔记" class="bds_evernotecn"></a><a href="#" data-cmd="weixin" title="分享到微信" class="bds_weixin"></a><a href="#" data-cmd="qzone" title="分享到QQ空间" class="bds_qzone"></a><a href="#" data-cmd="tsina" title="分享到新浪微博" class="bds_tsina"></a></div></div><div class="post-nav"><a href="/2018/09/12/javascript学习之三/" class="next">javascript学习之三</a></div><div id="comments"><div id="SOHUCS" sid="2018/09/14/javascript学习之四/"></div></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#javascript学习16章（HTML5脚本编程）"><span class="toc-text">javascript学习16章（HTML5脚本编程）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跨文档消息的传递"><span class="toc-text">跨文档消息的传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原生拖放"><span class="toc-text">原生拖放</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#拖放事件"><span class="toc-text">拖放事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自定义放置目标"><span class="toc-text">自定义放置目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dataTransfer"><span class="toc-text">dataTransfer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dropEffect和effectAllowed"><span class="toc-text">dropEffect和effectAllowed</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#可拖动"><span class="toc-text">可拖动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他成员"><span class="toc-text">其他成员</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#媒体元素"><span class="toc-text">媒体元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#属性"><span class="toc-text">属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#事件"><span class="toc-text">事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自定义媒体播放器"><span class="toc-text">自定义媒体播放器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检测编解码器的支持情况"><span class="toc-text">检测编解码器的支持情况</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Audio类型"><span class="toc-text">Audio类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#历史状态管理"><span class="toc-text">历史状态管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#小结"><span class="toc-text">小结</span></a></li></ol></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/14/javascript学习之四/">javascript学习之四</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/12/javascript学习之三/">javascript学习之三</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/javascript学习之二/">javascript学习之二</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/28/javascript学习之一/">javascript学习之一</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/24/网站搭建学习/">网站搭建学习</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/伸手党/" style="font-size: 15px;">伸手党</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="undefined" title="暂无" target="_blank">暂无</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">胡文(Christine Hu).</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script><script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","weixin","tsina","qzone","linkedin","fbook","twi","print","renren","sqq","evernotecn","bdysc","tqq","tqf","bdxc","kaixin001","tieba","douban","bdhome","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","h163","copy"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","weixin","fbook","twi","linkedin","youdao","evernotecn","mshare"]}};with(document)0[(getElementsByTagName('head')[0]||head).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script><script>window._config = { showScore: true };
+(function(){ 
+  var appid = 'cytMxV10H'; 
+  var conf = 'f2bf5a341a1e6f49c1fc28720815b3cd'; 
+  var width = window.innerWidth || document.documentElement.clientWidth; 
+  var nodes =document.getElementsByTagName("head")[0]||document.head||document.documentElement;
+  if (/(Android|iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && width < 750) {  
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+  }
+  else { 
+    var loadJs=function(d,a){
+      var b=document.createElement("script");b.setAttribute("type","text/javascript");
+      b.setAttribute("charset","UTF-8");
+      b.setAttribute("src",d);
+      if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}
+      nodes.appendChild(b)
+    };
+    loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); 
+  } 
+  var loadCss = function(cssString){  
+    var style=document.createElement("style");  
+    style.setAttribute("type", "text/css");  
+    if(style.styleSheet){// IE  
+        style.styleSheet.cssText = cssString;  
+    } else {// w3c  
+        var cssText = document.createTextNode(cssString);  
+        style.appendChild(cssText);  
+    }
+    nodes.appendChild(style);
+  }
+  window.onload=function(){loadCss('.module-hot-topic,.module-cmt-float-bar{display:none!important}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .cbox-prompt-w span.prompt-empty-w,#SOHUCS #SOHU_MAIN .module-cmt-float-bar .wrap-cont-w .cont-form-w .form-text-w span.text-null,#SOHUCS #SOHU_MAIN .module-cmt-float-bar .wrap-cont-w .cont-minwidth-w div.cont-comment-w a.comment-link-w,#SOHUCS #SOHU_MAIN .module-cmt-float-bar .wrap-cont-w .cont-minwidth-w div.cont-comment-w span.comment-text-w,#SOHUCS #SOHU_MAIN .module-cmt-footer .section-service-w div.service-wrap-w a:hover,#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w div.header-login,#SOHUCS #SOHU_MAIN .module-cmt-header .section-title-w .title-user-w .user-wrap-w span.wrap-name-w,#SOHUCS #SOHU_MAIN .module-cmt-list .action-click-gw span.click-disable-eg a em.icon-name-bg,#SOHUCS #SOHU_MAIN .module-cmt-list .block-title-gw ul li div.title-name-gw,#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .cmt-list-number .comment-number span.cy-number,#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .cmt-list-number span.comment-number,#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .type-lists li.active,#SOHUCS #SOHU_MAIN .module-cmt-list .msg-wrap-gw .wrap-action-gw .action-click-gw span a:hover,#SOHUCS #SOHU_MAIN .module-cmt-list .picture-box-gw div.box-action-gw a:hover,#SOHUCS #SOHU_MAIN .module-cmt-list .wrap-action-gw .action-click-gw span a:hover em.icon-name-bg,#SOHUCS #SOHU_MAIN .module-cmt-list .wrap-user-gw span.user-name-gw a{color:#40759b!important}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-border-t div.post-wrap-border-t-r,#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w div.post-wrap-border-l,#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w div.post-wrap-border-r{display:none!important}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .post-wrap-border-t div.post-wrap-border-t-l{background:#FFF!important;top:-2px!important}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-function-w .uploading-wrapper-dw div.wrapper-image-dw,#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w div.post-wrap-main,#SOHUCS #SOHU_MAIN .module-cmt-float-bar .wrap-cont-w .cont-form-w div.form-text-w,#SOHUCS #SOHU_MAIN .module-cmt-header .section-cbox-w .block-head-w div.header-login,#SOHUCS #SOHU_MAIN .module-cmt-list .module-cmt-box .post-wrap-w div.post-wrap-main{border:1px solid #e6e6e6!important;border-radius:20px 20px 20px 20px;margin:0!important}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a .btn-fw{width:130px!important;height:34px!important;line-height:33px!important;font-size:17px!important;background:#5483b1!important;border-radius:20px!important;color:#FFF!important;-webkit-box-shadow:0 -1px 4px #5483b1 inset;box-shadow:0 -1px 10px #5483b1 inset}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a .btn-fw:before{content:"发表评论"}#SOHUCS #SOHU_MAIN .module-cmt-box .post-wrap-w .wrap-action-w .action-issue-w .issue-btn-w a:hover .btn-fw{color:#40759b!important;background:#FFF!important}#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .type-lists li{background:none!important;border-bottom:1px solid #e6e6e6}#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type .type-lists li.active{border:1px solid #e6e6e6;border-radius:10px 10px 0 0;border-bottom:none}#SOHUCS #SOHU_MAIN .module-cmt-list .block-title-gw ul li .title-name-gw div.title-name-gw-tag{background:#5483b1!important;border-radius:3px}#SOHUCS #SOHU_MAIN .module-cmt-list .cmt-list-type div.cmt-list-border{background-color:#e6e6e6!important}#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item{border:1px solid #e6e6e6!important}#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item .nt-logo{text-align:center;line-height:40px;border-radius:50%!important;background:#e6e6e6!important}#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item .nt-logo:before{content:"畅";font-size:22px;color:#FFF}#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item a.nt-text,#SOHUCS #SOHU_MAIN .module-cmt-notice ul.nt-list li.nt-item a.nt-text i{color:#5483b1!important}#SOHUCS #SOHU_MAIN .module-cmt-header .section-title-w .title-user-w .user-wrap-w{background:#FFF!important}');};
+})();</script><script src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script></body></html>
